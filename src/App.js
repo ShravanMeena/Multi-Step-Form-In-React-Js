@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import First from "./components/First";
+import Progress from "./components/Progress";
+import Fourth from "./components/Fourth";
+import Second from "./components/Second";
+import Third from "./components/Third";
+import Fifth from "./components/Fifth";
 
-function App() {
+const steps = {
+  1: First,
+  2: Second,
+  3: Third,
+  4: Fourth,
+  5: Fifth,
+};
+
+export default function App() {
+  const [step, setStep] = useState(1);
+
+  let Step = steps[step];
+
+  const onNextStep = () => {
+    setStep(step + 1);
+  };
+  const onBackStep = () => {
+    setStep(step - 1);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Progress step={step} />
+      <Step step={step} onNextStep={onNextStep} onBackStep={onBackStep} />
     </div>
   );
 }
-
-export default App;
