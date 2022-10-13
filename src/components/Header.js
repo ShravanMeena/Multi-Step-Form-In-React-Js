@@ -5,7 +5,9 @@ export default function Header({ step }) {
   return (
     <div className="header">
       <div className="headerTop">
-        <h4>Create Account</h4>
+        <h4>
+          Create Account <span style={{ color: "gray" }}>({step}/4)</span>
+        </h4>
         <h4>X</h4>
       </div>
 
